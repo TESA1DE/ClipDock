@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleIconFile</key><string>ClipDock</string>
+<key>CFBundleName</key><string>ClipDock</string>
+<key>CFBundleDisplayName</key><string>ClipDock</string>
+<key>CFBundleIdentifier</key><string>com.clipdock.app</string>
+<key>CFBundleExecutable</key><string>ClipDock</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleShortVersionString</key><string>0.3.0</string>
+<key>CFBundleVersion</key><string>3</string>
+<key>LSMinimumSystemVersion</key><string>14.0</string>
+<key>LSUIElement</key><true/>
+<key>NSHighResolutionCapable</key><true/>
+<key>NSPrincipalClass</key><string>NSApplication</string>
+<key>NSHumanReadableCopyright</key><string>Copyright © 2026 ClipDock contributors. MIT License.</string>
+<key>CFBundleURLTypes</key><array><dict><key>CFBundleURLName</key><string>Game Mode</string><key>CFBundleURLSchemes</key><array><string>clipdock</string></array></dict></array>
+</dict></plist>
