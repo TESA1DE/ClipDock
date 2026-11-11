@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-"""Regenerate the dependency-free Xcode project. Python 3, no packages required."""
 from pathlib import Path
 import hashlib
 root = Path(__file__).resolve().parent.parent

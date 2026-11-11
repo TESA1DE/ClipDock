@@ -188,7 +188,6 @@ final class ClipboardIntegrationTests: XCTestCase {
         view.frame = NSRect(x: 0, y: 0, width: 100, height: 50)
         var activated = 0
         view.activate = { activated += 1 }
-        // Dispatch only to an isolated, offscreen view; no input is posted to the system.
         let up = try XCTUnwrap(NSEvent.mouseEvent(with: .leftMouseUp, location: NSPoint(x: 10, y: 10), modifierFlags: [], timestamp: 0, windowNumber: 0, context: nil, eventNumber: 1, clickCount: 1, pressure: 0))
         view.mouseUp(with: up)
         XCTAssertEqual(activated, 0)

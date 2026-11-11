@@ -1,5 +1,4 @@
 #!/bin/bash
-# Delegate to the installed app. ClipDock asks for confirmation before changes.
 set -euo pipefail
 if [[ ! -d /Applications/ClipDock.app && ! -d "$HOME/Applications/ClipDock.app" ]]; then
   printf 'Install ClipDock in Applications first.\n' >&2

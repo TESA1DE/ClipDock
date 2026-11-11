@@ -1,4 +1,3 @@
-// Rebuild with: xcrun swift scripts/generate-icon.swift
 import AppKit
 import Foundation
 let root = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)

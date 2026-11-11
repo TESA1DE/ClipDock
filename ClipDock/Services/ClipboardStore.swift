@@ -47,7 +47,6 @@ final class ClipboardStore: ObservableObject {
         if let name = item.imageName { dragImageExpirations[name] = .distantFuture }
     }
     func finishDraggingImage(_ item: ClipboardItem, now: Date = Date()) {
-        // Drop receivers may read the file shortly after AppKit finishes the drag session.
         if let name = item.imageName { dragImageExpirations[name] = now.addingTimeInterval(60) }
     }
     func expireHistory(now: Date = Date()) {
@@ -70,7 +69,6 @@ final class ClipboardStore: ObservableObject {
         guard ready, storageAvailable else { return }
         let snapshot = Snapshot(items: history.items, apps: apps, settings: settings)
         let storage = storage
-        // Keep session-only images until termination so disabling persistence does not break previews.
         let images = Set(history.items.compactMap(\.imageName)).union(dragImageExpirations.keys)
         diskQueue.async { [weak self] in
             do {

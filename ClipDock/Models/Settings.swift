@@ -75,7 +75,6 @@ public struct Snapshot: Codable, Sendable {
     }
 }
 
-/// Atomic, versioned metadata. Image assets are separate so text edits never rewrite images.
 public struct LocalStorage: Sendable {
     public let directory: URL
     public var imagesDirectory: URL { directory.appendingPathComponent("Images", isDirectory: true) }

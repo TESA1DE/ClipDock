@@ -19,7 +19,6 @@ final class ClipboardMonitor {
     init(store: ClipboardStore, active: ActiveApplicationMonitor, pasteboard: NSPasteboard = .general) {
         self.store = store; self.active = active; self.pasteboard = pasteboard; changeCount = pasteboard.changeCount
         active.didActivate = { [weak self] previous in
-            // Discard a change made in an excluded application before the next timer fires.
             guard let self else { return }
             if self.isExcluded || previous.map(self.store.settings.excludedBundleIDs.contains) == true { self.invalidatePendingCapture() }
         }

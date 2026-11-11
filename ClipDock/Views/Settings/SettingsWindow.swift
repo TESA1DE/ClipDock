@@ -1,8 +1,6 @@
 import AppKit
 import SwiftUI
 
-/// Own the entire titlebar background instead of letting clear window backing
-/// show through the portion not covered by the native traffic-light decoration.
 final class SettingsWindow: NSWindow {
     init<Content: View>(rootView: Content) {
         super.init(contentRect: NSRect(x: 0, y: 0, width: 720, height: 560),
@@ -11,7 +9,6 @@ final class SettingsWindow: NSWindow {
         title = "ClipDock Settings"
         isReleasedWhenClosed = false
         minSize = NSSize(width: 680, height: 520)
-        // Native buttons/title draw above our solid strip; only the body uses glass.
         titlebarAppearsTransparent = true
         toolbar = nil
         let container = NSView()

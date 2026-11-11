@@ -5,7 +5,6 @@ struct InstallError: LocalizedError {
     var errorDescription: String? { message }
 }
 
-/// Copies a complete, uncompressed app bundle. Never touches user history or preferences.
 enum InstallerEngine {
     static func verify(_ app: URL) throws {
         guard let bundle = Bundle(url: app), bundle.bundleIdentifier == "com.clipdock.app",
@@ -15,7 +14,6 @@ enum InstallerEngine {
         let process = Process()
         process.executableURL = URL(fileURLWithPath: "/usr/bin/codesign")
         process.arguments = ["--verify", "--deep", "--strict", app.path]
-        // No output is needed; avoid pipe backpressure on a malformed bundle.
         process.standardOutput = FileHandle.nullDevice
         process.standardError = FileHandle.nullDevice
         try process.run(); process.waitUntilExit()
@@ -44,7 +42,6 @@ enum InstallerEngine {
         let staged = directory.appendingPathComponent(".ClipDock-install-\(token).app", isDirectory: true)
         let backup = directory.appendingPathComponent(".ClipDock-previous-\(token).app", isDirectory: true)
         defer { try? fm.removeItem(at: staged) }
-        // FileManager preserves quarantine metadata. The installer never disables Gatekeeper.
         try fm.copyItem(at: source, to: staged)
         try verify(staged)
         var backedUp = false

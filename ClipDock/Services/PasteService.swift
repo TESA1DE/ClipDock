@@ -1,7 +1,6 @@
 import AppKit
 import ApplicationServices
 
-/// Captures only the focused control's identity, never its value or selected text.
 @MainActor
 final class PasteService {
     private var target: NSRunningApplication?
@@ -28,7 +27,6 @@ final class PasteService {
         guard let focusedElement, isEditable(focusedElement) else { return "Copied. No editable field was detected in the destination app. Focus a field and use ⌘V." }
         return nil
     }
-    /// Returns an explanation on cancellation; nil means a paste command was sent, not proof the app accepted it.
     func paste(changeCount: Int) async -> String? {
         guard let target, let expectedFocus = focusedElement else { return "Copied. Focus a destination field and use ⌘V." }
         let token = generation

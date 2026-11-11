@@ -69,7 +69,6 @@ final class ActionController: ObservableObject {
                 alert.addButton(withTitle: "Run script"); alert.addButton(withTitle: "Cancel")
                 NSApp.activate(ignoringOtherApps: true)
                 guard alert.runModal() == .alertFirstButtonReturn else { return }
-                // Execute precisely the bytes shown/approved, not a file that could change after approval.
                 running = action.id; message = "Running \(action.name)…"
                 let task = Self.makeScriptProcess(source: source, url: url); process = task
                 task.terminationHandler = { [weak self] process in

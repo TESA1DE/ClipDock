@@ -1,7 +1,6 @@
 import AppKit
 import SwiftUI
 
-/// Native drag session supports several file URLs and always offers copy, never move.
 struct ClipboardDragSource<Content: View>: NSViewRepresentable {
     var height: CGFloat
     var label: String
@@ -69,7 +68,7 @@ final class DragView<Content: View>: NSView, NSDraggingSource {
             item.setDraggingFrame(bounds.offsetBy(dx: offset, dy: -offset), contents: preview)
             return item
         }
-        activeDragSource = self // Keep the source alive if retention removes its row mid-drag.
+        activeDragSource = self
         started?()
         let session = beginDraggingSession(with: items, event: event, source: self)
         session.animatesToStartingPositionsOnCancelOrFail = true

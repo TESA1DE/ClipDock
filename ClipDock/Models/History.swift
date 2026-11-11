@@ -10,7 +10,6 @@ public struct History: Sendable {
         }
     }
     public func search(_ query: String) -> [ClipboardItem] { ordered.filter { $0.matches(query) } }
-    /// Repeated values reuse their identity and pin state, and move to the most recent position.
     public mutating func insert(_ item: ClipboardItem, limit: Int, imageBudget: Int = 200 * 1_024 * 1_024) {
         if let index = items.firstIndex(where: { $0.fingerprint == item.fingerprint }) {
             items[index].createdAt = item.createdAt

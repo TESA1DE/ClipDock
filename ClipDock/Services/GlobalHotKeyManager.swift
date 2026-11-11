@@ -25,7 +25,6 @@ final class GlobalHotKeyManager {
             }
         }, 1, &event, Unmanaged.passUnretained(self).toOpaque(), &handler)
     }
-    /// Register the replacement before releasing the working shortcut.
     func register(_ value: HotKey) -> Bool {
         var candidate: EventHotKeyRef?
         let id = EventHotKeyID(signature: 0x434C4950, id: identifier)

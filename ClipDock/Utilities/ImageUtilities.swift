@@ -3,7 +3,6 @@ import ImageIO
 import UniformTypeIdentifiers
 
 struct ImageUtilities {
-    /// Decode with ImageIO downsampling, never allocate a full resolution bitmap.
     static func normalizedPNG(_ data: Data) -> Data? {
         guard data.count <= 32 * 1_024 * 1_024,
               let source = CGImageSourceCreateWithData(data as CFData, [kCGImageSourceShouldCache: false] as CFDictionary),

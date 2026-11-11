@@ -16,8 +16,6 @@ extension AppTint {
     }
 }
 
-/// A real behind-window backdrop: blur samples the desktop and other windows,
-/// rather than making the SwiftUI content itself transparent.
 struct FrostedBackdrop: NSViewRepresentable {
     var radius: CGFloat
     func makeNSView(context: Context) -> NSVisualEffectView {
@@ -53,7 +51,6 @@ struct PanelBackground: View {
             } else {
                 ZStack {
                     FrostedBackdrop(radius: radius)
-                    // Retain contrast over bright windows without exposing sharp text behind the panel.
                     shape.fill(colorScheme == .dark ? Color.black.opacity(0.12) : Color.white.opacity(0.16))
                     if appearance == .tinted {
                         shape.fill(tint.color.opacity(colorScheme == .dark ? 0.07 : 0.045))

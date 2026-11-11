@@ -83,7 +83,6 @@ final class AppState: ObservableObject {
         }
         guard let item = results.first(where: { $0.id == selectedID }) else { return false }
         if event.keyCode == 36, flags.isEmpty {
-            // Let Tab-focused buttons retain their standard Return behavior.
             if event.window?.firstResponder is NSTextView { copy(item); return true }
         }
         if command, event.charactersIgnoringModifiers == "p" { store.togglePin(item); return true }

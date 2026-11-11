@@ -18,7 +18,6 @@ struct ClipboardPreviewView: View {
         }.frame(width: 36, height: 36).clipShape(RoundedRectangle(cornerRadius: 8))
         .task(id: imageURL) {
             guard let imageURL else { return }
-            // Files are small downsampled PNGs; thumbnails load only for visible lazy rows.
             thumbnail = NSImage(contentsOf: imageURL)
             if thumbnail == nil {
                 try? await Task.sleep(for: .milliseconds(250))
